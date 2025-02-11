@@ -1,0 +1,12 @@
+name: Environment Variables
+on: push
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: main
+    steps:
+      - run: echo "${BRANCH}" # ジョブレベルで参照
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}  #envコンテキスト経由で参照
